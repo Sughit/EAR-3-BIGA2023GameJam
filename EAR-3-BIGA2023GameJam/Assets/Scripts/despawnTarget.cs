@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class despawnTarget : MonoBehaviour
 {
-    public float timeToDespawn;
+    public static float timeToDespawn = 6f;
 
     void Update()
     {
+        // if(destroyOnClick.score % 5 == 0)
+        // {
+        //     timeToDespawn -= 0.01f;
+        // }
         if(timeToDespawn <= 0)
         {
             Destroy(gameObject);
