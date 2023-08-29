@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class despawnTarget : MonoBehaviour
 {
-    public float timeToDespawn = 6f;
+    public float timeToDespawn;
+    // public static float timeToDespawnStatic = 6f;
+
+    // void Awake()
+    // {
+    //     timeToDespawn = timeToDespawnStatic;
+    // }
 
     void Update()
     {
         // if(destroyOnClick.score % 5 == 0)
         // {
-        //     timeToDespawn -= 0.01f;
+        //     timeToDespawnStatic -= 0.01f;
         // }
         if(timeToDespawn <= 0)
         {
