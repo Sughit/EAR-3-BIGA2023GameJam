@@ -6,12 +6,16 @@ using UnityEngine.UI;
 public class destroyOnClick : MonoBehaviour
 {
     public Text scoreText;
-    public int score;
+    public static int score;
 
-    void OnMouseClick()
+    void Update()
     {
-        score++;
         scoreText.text = $"Score: {score}";
+    }
+    void OnMouseDown()
+    {
+        Debug.Log(score);
+        score++;
         Destroy(gameObject);
     }
 }
