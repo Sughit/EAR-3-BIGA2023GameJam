@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class despawnTarget : MonoBehaviour
 {
-    public float timeToDespawn;
+    public static float timeToDespawn=2f;
     // public static float timeToDespawnStatic = 6f;
+    public float currentDespawnTime;
 
-    // void Awake()
-    // {
-    //     timeToDespawn = timeToDespawnStatic;
-    // }
+    void Start()
+    {
+        currentDespawnTime=timeToDespawn;
+    }
 
     void Update()
     {
-        // if(destroyOnClick.score % 5 == 0)
-        // {
-        //     timeToDespawnStatic -= 0.01f;
-        // }
-        if(timeToDespawn <= 0)
+
+        if(currentDespawnTime <= 0)
         {
             Destroy(gameObject);
         }
         else
         {
-            timeToDespawn -= Time.deltaTime;
+            currentDespawnTime -= Time.deltaTime;
         }
+        Debug.Log(currentDespawnTime);
     }
 }

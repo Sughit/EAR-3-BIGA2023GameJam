@@ -7,7 +7,7 @@ public class destroyOnClick : MonoBehaviour
 {
     public Text scoreText;
     public static int score;
-    // static int decreaseTimeToDespawn;
+    static int decreaseTimeToDespawn;
 
     void Update()
     {
@@ -18,20 +18,23 @@ public class destroyOnClick : MonoBehaviour
     {
         if(Time.timeScale == 1)
         {
-            Debug.Log(score);
+            Debug.Log(despawnTarget.timeToDespawn);
             score++;
-            // decreaseTimeToDespawn++;
+            decreaseTimeToDespawn++;
+            MinusTimeToDespawn();
             Destroy(gameObject);
-            // MinusTimeToDespawn();
         }
     }
 
-    // void MinusTimeToDespawn()
-    // {
-    //     if(decreaseTimeToDespawn == 5)
-    //     {
-    //         despawnTarget.timeToDespawn -= 0.001f;
-    //         decreaseTimeToDespawn = 0;
-    //     }
-    // }
+    void MinusTimeToDespawn()
+    {
+        if(decreaseTimeToDespawn == 5)
+        {
+            if(despawnTarget.timeToDespawn>=0.3f)
+                {   
+                    despawnTarget.timeToDespawn -= 0.03f;
+                    decreaseTimeToDespawn = 0;
+                }
+        }
+    }
 }
