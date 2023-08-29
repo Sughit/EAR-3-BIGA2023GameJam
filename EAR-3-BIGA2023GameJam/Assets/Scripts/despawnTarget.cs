@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class despawnTarget : MonoBehaviour
 {
-    public static float timeToDespawn = 6f;
+    public float timeToDespawn = 6f;
 
     void Update()
     {
