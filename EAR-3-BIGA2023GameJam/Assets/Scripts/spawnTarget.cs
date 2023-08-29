@@ -19,9 +19,9 @@ public class spawnTarget : MonoBehaviour
             {
                 Instantiate(target, areaToSpawn[random].transform);
                 currentTime = timeToSpawn;
-                if(timeToSpawn>=0.4f)
+                if(timeToSpawn>=0.42f)
                 {
-                    timeToSpawn-=0.06f;
+                    timeToSpawn-=0.05f;
                 }
             }
         }
