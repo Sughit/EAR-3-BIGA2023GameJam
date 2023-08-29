@@ -7,6 +7,7 @@ public class scriptButoane : MonoBehaviour
     public void PlayGame()
     {
         Time.timeScale=1;
+        Cursor.visible = false;
         SceneManager.LoadScene("SampleScene");
     }
 

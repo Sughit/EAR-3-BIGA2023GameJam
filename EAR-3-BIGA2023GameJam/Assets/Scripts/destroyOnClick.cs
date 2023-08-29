@@ -30,7 +30,7 @@ public class destroyOnClick : MonoBehaviour
     {
         if(decreaseTimeToDespawn == 5)
         {
-            if(despawnTarget.timeToDespawn>=0.3f)
+            if(despawnTarget.timeToDespawn>=0.4f)
                 {   
                     despawnTarget.timeToDespawn -= 0.03f;
                     decreaseTimeToDespawn = 0;

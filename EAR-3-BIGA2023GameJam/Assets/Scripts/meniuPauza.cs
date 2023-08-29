@@ -17,6 +17,7 @@ public class meniuPauza : MonoBehaviour
                 meniuPauzaObj.SetActive(true);
                 meniuDeschis=true;
                 Time.timeScale=0;
+                Cursor.visible = true;
             }
         }
         else if(meniuDeschis)
@@ -26,26 +27,30 @@ public class meniuPauza : MonoBehaviour
                 meniuPauzaObj.SetActive(false);
                 meniuDeschis=false;
                 Time.timeScale=1;
+                Cursor.visible = false;
             } 
         }
     }
 
     public void Resume()
     {
-        Time.timeScale=1f;
         meniuPauzaObj.SetActive(false);
         meniuDeschis=false;
+        Time.timeScale=1f;
+        Cursor.visible = false;
 
     }
     public void Restart()
     {
-        Time.timeScale=1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale=1f;
+        Cursor.visible = false;
     }
 
     public void Main_Menu()
     {
-         Time.timeScale=1f;
+        Time.timeScale=1f;
         SceneManager.LoadScene("MeniuPrincipal");
+        Cursor.visible = true;
     }
 }
