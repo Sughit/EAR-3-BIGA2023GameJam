@@ -6,6 +6,7 @@ public class playerFight : MonoBehaviour
 {
     Rigidbody2D rb;
     public float jumpForce = 10f;
+    bool canJump=true;
     public int numOfHits;
     public Transform hitPoint;
     public Transform legPoint;
@@ -18,11 +19,20 @@ public class playerFight : MonoBehaviour
     {
         rb=GetComponent<Rigidbody2D>();
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Ground")
+        {
+            canJump = true;
+        }
+    }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             rb.AddForce(Vector2.up * jumpForce);
+            canJump = false;
         }
 
         Vector3 scale = transform.localScale;
@@ -104,10 +114,14 @@ public class playerFight : MonoBehaviour
     {
         foreach(Collider2D collider in Physics2D.OverlapCircleAll(hitPoint.position, attackRange))
         {
-                if(enemy = collider.GetComponent<enemyHealth>())
-                {
-                    enemy.TakeDamage(damage);
-                }
+            if(enemy = collider.GetComponent<enemyHealth>())
+            {
+                enemy.TakeDamage(damage);
+            }
+            else
+            {
+                numOfHits=0;
+            }
         }
     }
 
@@ -115,10 +129,14 @@ public class playerFight : MonoBehaviour
     {
         foreach(Collider2D collider in Physics2D.OverlapCircleAll(legPoint.position, attackRange))
         {
-                if(enemy = collider.GetComponent<enemyHealth>())
-                {
-                    enemy.TakeDamage(damage);
-                }
+            if(enemy = collider.GetComponent<enemyHealth>())
+            {
+                enemy.TakeDamage(damage);
+            }
+            else
+            {
+                numOfHits=0;
+            }
         }
     }
 
