@@ -1304,7 +1304,7 @@ GameObject:
   - component: {fileID: 1651953830}
   - component: {fileID: 1651953829}
   m_Layer: 0
-  m_Name: Square
+  m_Name: pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1807,6 +1807,8 @@ MonoBehaviour:
   - {fileID: 918433855}
   - {fileID: 1946330180}
   target: {fileID: 7240865398469591774, guid: b2d2c956ef6794040aa57cc9fef81d12, type: 3}
+  targetDown: {fileID: 1452723953952907, guid: f139fe732bb756f41aae0345924bb0ad, type: 3}
+  targetUp: {fileID: 5034818773432583926, guid: 6fabc4dcaac0d204393dce3ae06c8b68, type: 3}
 --- !u!4 &1968735753
 Transform:
   m_ObjectHideFlags: 0

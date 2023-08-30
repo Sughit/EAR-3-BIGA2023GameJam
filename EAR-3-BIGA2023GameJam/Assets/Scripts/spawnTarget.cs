@@ -8,6 +8,8 @@ public class spawnTarget : MonoBehaviour
     public float currentTime;
     public GameObject[] areaToSpawn;
     public GameObject target;
+    public GameObject targetDown;
+    public GameObject targetUp;
 
 
     void Update()
@@ -17,7 +19,18 @@ public class spawnTarget : MonoBehaviour
             int random = Random.Range(0,areaToSpawn.Length);
             if(areaToSpawn[random].transform.childCount == 0)
             {
-                Instantiate(target, areaToSpawn[random].transform);
+                if(random == 0 || random == 1 || random == 2)
+                {
+                    Instantiate(targetUp, areaToSpawn[random].transform);
+                }
+                else if(random == 3 || random == 4)
+                {
+                    Instantiate(targetDown, areaToSpawn[random].transform);
+                }
+                else 
+                {
+                    Instantiate(target, areaToSpawn[random].transform);
+                }
                 currentTime = timeToSpawn;
                 if(timeToSpawn>=0.42f)
                 {
