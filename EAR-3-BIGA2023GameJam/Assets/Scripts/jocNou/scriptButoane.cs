@@ -8,7 +8,7 @@ public class scriptButoane : MonoBehaviour
     {
         Time.timeScale=1;
         Cursor.visible = false;
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("jocNou");
     }
 
     public void ExitGame() 

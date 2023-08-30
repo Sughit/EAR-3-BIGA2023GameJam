@@ -6,7 +6,7 @@ public class playerFight : MonoBehaviour
 {
     Rigidbody2D rb;
     public float jumpForce = 10f;
-    bool canJump=true;
+    public bool canJump=true;
     public int numOfHits;
     public Transform hitPoint;
     public Transform legPoint;
@@ -14,10 +14,12 @@ public class playerFight : MonoBehaviour
     public float damage;
     enemyHealth enemy;
     Animator animEnemy;
+    Animator pinguin;
 
     void Start()
     {
         rb=GetComponent<Rigidbody2D>();
+        pinguin=GetComponent<Animator>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -32,6 +34,7 @@ public class playerFight : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             rb.AddForce(Vector2.up * jumpForce);
+            pinguin.SetTrigger("sarit");
             canJump = false;
         }
 
@@ -40,6 +43,7 @@ public class playerFight : MonoBehaviour
         {
             scale.x = -1;
             transform.localScale = scale;
+            pinguin.SetTrigger("atac");
             numOfHits++;
             if(numOfHits == 3)
             {
@@ -52,6 +56,7 @@ public class playerFight : MonoBehaviour
         {
             scale.x = 1;
             transform.localScale = scale;
+            pinguin.SetTrigger("atac");
             numOfHits++;
             if(numOfHits == 3)
             {
@@ -83,6 +88,19 @@ public class playerFight : MonoBehaviour
                 numOfHits=0;
             }
             LegAttack();
+        }
+
+        if(Input.GetKey(KeyCode.D))
+        {
+            pinguin.SetBool("atac(jos)",true);
+        }else if(Input.GetKey(KeyCode.A))
+        {
+            pinguin.SetBool("atac(jos)",true);
+
+        
+        }else
+        {
+            pinguin.SetBool("atac(jos)",false);
         }
     }
 
@@ -150,4 +168,13 @@ public class playerFight : MonoBehaviour
         Vector3 legPosition = legPoint.position;
         Gizmos.DrawWireSphere(legPosition, attackRange);
     }
+
+    public IEnumerator GravityOnOff()
+    {
+        rb.velocity=new Vector2(0, 0);
+        rb.gravityScale = 0.0f;
+        yield return new WaitForSeconds(0.2f);
+        rb.gravityScale = 8.0f;
+    }
+
 }

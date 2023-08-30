@@ -7,8 +7,16 @@ public class meniuPauza : MonoBehaviour
 {
     public GameObject meniuPauzaObj;
      bool meniuDeschis;
+
+     void Start()
+    {
+         Cursor.visible = false;
+    }
+
+    
     void Update()
     {
+
 
         if(!meniuDeschis)
         {

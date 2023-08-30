@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MeniuPrincipal.unity
     guid: 1c7dcc781edaefa4b949f65cc1214738
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/jocNou.unity
+    guid: f1c3210047107044ab4363beda6eae23
   m_configObjects: {}
