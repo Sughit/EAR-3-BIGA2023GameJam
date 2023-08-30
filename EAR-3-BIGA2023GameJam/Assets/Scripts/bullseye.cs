@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class bullseye : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public health heal;
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseDown()
     {
-        
+        if(Time.timeScale == 1)
+        {
+            heal.ModifyHealth(1);
+            destroyOnClick.score += 2;
+            Destroy(gameObject.transform.parent);
+        }
     }
 }
