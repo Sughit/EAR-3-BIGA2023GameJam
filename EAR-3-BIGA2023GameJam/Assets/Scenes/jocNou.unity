@@ -2207,6 +2207,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1038723363}
     - target: {fileID: 8624322597293388747, guid: a00d2c2329052314fb20ccae3fe18f78, type: 3}
+      propertyPath: maxHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624322597293388747, guid: a00d2c2329052314fb20ccae3fe18f78, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
       objectReference: {fileID: 740163411}
@@ -2226,5 +2230,25 @@ PrefabInstance:
       propertyPath: hearts.Array.data[4]
       value: 
       objectReference: {fileID: 132121840}
+    - target: {fileID: 8624322597293388747, guid: a00d2c2329052314fb20ccae3fe18f78, type: 3}
+      propertyPath: heartStages.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624322597293388747, guid: a00d2c2329052314fb20ccae3fe18f78, type: 3}
+      propertyPath: heartStages.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: c2de6874e8cd31c49b73cc70ea9b5415, type: 3}
+    - target: {fileID: 8624322597293388747, guid: a00d2c2329052314fb20ccae3fe18f78, type: 3}
+      propertyPath: heartStages.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3d147ba3990bb784181cdfa0f1c4b973, type: 3}
+    - target: {fileID: 8624322597293388747, guid: a00d2c2329052314fb20ccae3fe18f78, type: 3}
+      propertyPath: heartStages.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 53e751c5d71d13949a20a99f6aa7a52f, type: 3}
+    - target: {fileID: 8624322597293388747, guid: a00d2c2329052314fb20ccae3fe18f78, type: 3}
+      propertyPath: heartStages.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 60a117c5d23cca84cb8487aee06296ca, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00d2c2329052314fb20ccae3fe18f78, type: 3}
