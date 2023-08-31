@@ -19,6 +19,7 @@ public class enemyHealth : MonoBehaviour
     {
         if(health <= 0)
         {
+            scoreSystem.score += 50;
             Destroy(gameObject);
         }
     }

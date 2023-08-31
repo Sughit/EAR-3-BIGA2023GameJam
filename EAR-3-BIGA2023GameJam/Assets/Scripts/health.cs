@@ -9,7 +9,13 @@ public class health : MonoBehaviour
     public int maxHealth;
     public GameObject gameOver;
     public Image[] hearts;
-    public Image[] heartStages;
+    public Sprite[] heartStages;
+
+    int index0 = 0;
+    int index1 = 0;
+    int index2 = 0;
+    int index3 = 0;
+    int index4 = 0;
 
     void Start()
     {
@@ -106,30 +112,33 @@ public class health : MonoBehaviour
         Health += amount;
         if(Health <= 25 && Health >20)
         {
-            ModifyHeart(4);
+            ModifyHeart(4, index0);
+            index0++; 
         }
         else if(Health <= 20 && Health >15)
         {
-            ModifyHeart(3);
+            ModifyHeart(3, index1);
+            index1++; 
         }
         else if(Health <= 15 && Health >10)
         {
-            ModifyHeart(2);
+            ModifyHeart(2, index2);
+            index2++; 
         }
         else if(Health <= 10 && Health >5)
         {
-            ModifyHeart(1);
+            ModifyHeart(1, index3);
+            index3++; 
         }
         else if(Health <= 5 && Health >=0)
         {
-            ModifyHeart(0);
+            ModifyHeart(0, index4);
+            index4++;
         }
     }
 
-    void ModifyHeart(int numOfHeart)
+    void ModifyHeart(int numOfHeart, int i)
     {
-        int i = 0;
-        hearts[numOfHeart] = heartStages[i];
-        i++; 
+        hearts[numOfHeart].sprite = heartStages[i];
     }
 }
