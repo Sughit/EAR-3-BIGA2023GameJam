@@ -13,6 +13,12 @@ public class enemyBrain : MonoBehaviour
     float currentTime;
     public Transform attackPoint;
     health playerHealth;
+    Animator anim;
+
+    void Start()
+    {
+        anim =GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -61,7 +67,9 @@ public class enemyBrain : MonoBehaviour
         {
             if(playerHealth = collider.GetComponent<health>())
             {
-                playerHealth.ModifyHealth(-damage);
+                playerHealth.Damage(-damage);
+                anim.SetTrigger("atac");
+
             }
         }
     }
