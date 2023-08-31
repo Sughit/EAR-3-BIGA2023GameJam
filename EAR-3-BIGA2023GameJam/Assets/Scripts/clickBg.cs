@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class clickBg : MonoBehaviour
 {
-    public health damage;
-    void OnMouseDown()
-    {
-        damage.ModifyHealth(-1);
-    }
+    // public health damage;
+    // void OnMouseDown()
+    // {
+    //     damage.ModifyHealth(-1);
+    // }
 }

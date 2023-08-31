@@ -69,7 +69,6 @@ public class enemyBrain : MonoBehaviour
             {
                 playerHealth.Damage(-damage);
                 anim.SetTrigger("atac");
-
             }
         }
     }
