@@ -166,7 +166,7 @@ MonoBehaviour:
   damage: 1
   damageLeg: 0.5
   attackRate: 0.5
-  attackLegRate: 0
+  attackLegRate: 0.5
 --- !u!50 &8607551531779686852
 Rigidbody2D:
   serializedVersion: 4
@@ -235,6 +235,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  heartStages: []
 --- !u!1 &8607551531924273538
 GameObject:
   m_ObjectHideFlags: 0
