@@ -40,6 +40,7 @@ public class enemyBrain : MonoBehaviour
             speed = 0;
             if(currentTime <= 0)
             {
+                Debug.Log("atac");
                 Attack();
                 currentTime = attackRate;
             }
@@ -60,7 +61,7 @@ public class enemyBrain : MonoBehaviour
         {
             if(playerHealth = collider.GetComponent<health>())
             {
-                playerHealth.ModifyHealth(damage);
+                playerHealth.ModifyHealth(-damage);
             }
         }
     }

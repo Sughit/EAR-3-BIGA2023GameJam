@@ -228,7 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   maxHealth: 5
-  gameOver: {fileID: 0}
+  gameOver: {fileID: 5233727263760550717, guid: 37622104644edcf499702b7f22131489, type: 3}
   hearts:
   - {fileID: 0}
   - {fileID: 0}
