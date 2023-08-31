@@ -8,10 +8,17 @@ public class playerFight : MonoBehaviour
     public float jumpForce = 10f;
     public bool canJump=true;
     public int numOfHits;
+    public int numOfHitsLeg;
     public Transform hitPoint;
     public Transform legPoint;
     public float attackRange;
+    public float attackRangeLeg;
     public float damage;
+    public float damageLeg;
+    public float attackRate;
+    public float attackLegRate;
+    float currentTime;
+    float currentLegTime;
     enemyHealth enemy;
     Animator animEnemy;
     Animator pinguin;
@@ -39,55 +46,89 @@ public class playerFight : MonoBehaviour
         }
 
         Vector3 scale = transform.localScale;
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(currentTime <= 0)
+        {
+            if(Input.GetKeyDown(KeyCode.Q))
+            {
+                currentTime = attackRate;
+                scale.x = -1;
+                transform.localScale = scale;
+                pinguin.SetTrigger("atac");
+                numOfHits++;
+                if(numOfHits == 3)
+                {
+                    SuperAttack();
+                    numOfHits=0;
+                }
+                Attack();
+            }
+        }
+        else
+        {
+            currentTime -= Time.deltaTime;
+        }
+
+        if(currentTime <= 0)
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                currentTime = attackRate;
+                scale.x = 1;
+                transform.localScale = scale;
+                pinguin.SetTrigger("atac");
+                numOfHits++;
+                if(numOfHits == 3)
+                {
+                    SuperAttack();
+                    numOfHits=0;
+                }
+                Attack();
+            }
+        }
+        else
+        {
+            currentTime -= Time.deltaTime;
+        }
+
+        if(Input.GetKey(KeyCode.A))
         {
             scale.x = -1;
             transform.localScale = scale;
-            pinguin.SetTrigger("atac");
-            numOfHits++;
-            if(numOfHits == 3)
+            // numOfHits++;
+            // if(numOfHits == 3)
+            // {
+            //     SuperLegAttack();
+            //     numOfHits=0;
+            // }
+            if(currentLegTime <= 0)
             {
-                SuperAttack();
-                numOfHits=0;
+                currentLegTime = attackLegRate;
+                LegAttack();
             }
-            Attack();
+            else
+            {
+                currentLegTime -= Time.deltaTime;
+            }
         }
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKey(KeyCode.D))
         {
             scale.x = 1;
             transform.localScale = scale;
-            pinguin.SetTrigger("atac");
-            numOfHits++;
-            if(numOfHits == 3)
+            // numOfHits++;
+            // if(numOfHits == 3)
+            // {
+            //     SuperLegAttack();
+            //     numOfHits=0;
+            // }
+            if(currentLegTime <= 0)
             {
-                SuperAttack();
-                numOfHits=0;
+                currentLegTime = attackLegRate;
+                LegAttack();
             }
-            Attack();
-        }
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            scale.x = -1;
-            transform.localScale = scale;
-            numOfHits++;
-            if(numOfHits == 3)
+            else
             {
-                SuperLegAttack();
-                numOfHits=0;
+                currentLegTime -= Time.deltaTime;
             }
-            LegAttack();
-        }
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            scale.x = 1;
-            transform.localScale = scale;
-            numOfHits++;
-            if(numOfHits == 3)
-            {
-                SuperLegAttack();
-                numOfHits=0;
-            }
-            LegAttack();
         }
 
         if(Input.GetKey(KeyCode.D))
@@ -149,7 +190,7 @@ public class playerFight : MonoBehaviour
         {
             if(enemy = collider.GetComponent<enemyHealth>())
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(damageLeg);
             }
             else
             {
@@ -166,7 +207,7 @@ public class playerFight : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Vector3 legPosition = legPoint.position;
-        Gizmos.DrawWireSphere(legPosition, attackRange);
+        Gizmos.DrawWireSphere(legPosition, attackRangeLeg);
     }
 
     public IEnumerator GravityOnOff()

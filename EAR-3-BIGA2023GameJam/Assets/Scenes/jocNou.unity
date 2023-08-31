@@ -225,7 +225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168174147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.73, y: -4.68, z: 0}
+  m_LocalPosition: {x: -0.73, y: -5.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -270,10 +270,15 @@ MonoBehaviour:
   jumpForce: 1200
   canJump: 1
   numOfHits: 0
+  numOfHitsLeg: 0
   hitPoint: {fileID: 296229378}
   legPoint: {fileID: 2051795411}
-  attackRange: 1.4
+  attackRange: 1
+  attackRangeLeg: 0.51
   damage: 1
+  damageLeg: 0.5
+  attackRate: 0.5
+  attackLegRate: 0
 --- !u!61 &168174153
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -516,7 +521,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 296229377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.83, y: 0, z: 0}
+  m_LocalPosition: {x: 0.77, y: -0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1482,7 +1487,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051795410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.83, y: -2.93, z: 0}
+  m_LocalPosition: {x: 1.28, y: -1.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1609,7 +1614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078690629}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.69, y: -4.88, z: 0}
+  m_LocalPosition: {x: 1.68, y: -6.01, z: 0}
   m_LocalScale: {x: 1.7719313, y: 5.347087, z: 1.3005}
   m_ConstrainProportionsScale: 0
   m_Children: []
