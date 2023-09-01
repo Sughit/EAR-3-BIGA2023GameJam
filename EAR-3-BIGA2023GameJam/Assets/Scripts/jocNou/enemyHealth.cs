@@ -7,6 +7,7 @@ public class enemyHealth : MonoBehaviour
     public float health;
     public float maxHealth;
     public GameObject textDamage;
+    public float isHit;
 
     void Awake()
     {
@@ -14,6 +15,7 @@ public class enemyHealth : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        isHit = 1;
         health -= damage;
         if(textDamage != null && health != 0)
         {
@@ -29,6 +31,7 @@ public class enemyHealth : MonoBehaviour
     }
     void Update()
     {
+        isHit -= Time.deltaTime;
         if(health <= 0)
         {
             scoreSystem.score += 50;

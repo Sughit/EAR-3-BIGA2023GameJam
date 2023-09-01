@@ -22,6 +22,7 @@ public class enemyBrain : MonoBehaviour
 
     void Update()
     {
+        float go = GetComponent<enemyHealth>().isHit;
         if(transform.position.x - player.position.x < 0)
         {
             transform.localScale = new Vector3(1,1,1);
@@ -44,7 +45,9 @@ public class enemyBrain : MonoBehaviour
         else if(Vector3.Distance(transform.position, player.position) <= stopDis)
         {
             speed = 0;
-            if(currentTime <= 0)
+            if(go <= 0)
+            {
+                if(currentTime <= 0)
             {
                 
                 Attack();
@@ -53,6 +56,7 @@ public class enemyBrain : MonoBehaviour
             else
             {
                 currentTime -= Time.deltaTime;
+            }
             }
         }
         else
