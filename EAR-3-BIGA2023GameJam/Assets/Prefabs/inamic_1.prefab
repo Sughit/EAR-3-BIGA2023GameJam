@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 5
+  textDamage: {fileID: 5709602141290167403, guid: 38ea8a11566dec742bd3f560e5b42f20, type: 3}
 --- !u!114 &2968016729859814580
 MonoBehaviour:
   m_ObjectHideFlags: 0
