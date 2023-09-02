@@ -6,24 +6,25 @@ public class spawnFlyEnemy : MonoBehaviour
 {
     public GameObject flyEnemy;
     public float timeToSpawn;
-    float currentTime;
+    bool coroutineCalled;
     public GameObject[] spawnPoints;
 
     void Update()
     {
         if(scoreSystem.score >= 500)
         {
-            if(currentTime <= 0)
+            if(!coroutineCalled)
             {
-                if(Random.Range(0,5) == 2)
-                {
-                    Instantiate(flyEnemy, spawnPoints[Random.Range(0,4)].transform.position, Quaternion.identity);
-                }
-            }
-            else
-            {
-                currentTime -= Time.deltaTime;
+                StartCoroutine(SpawnFlyEnemy());
             }
         }
+    }
+
+    IEnumerator SpawnFlyEnemy()
+    {
+        coroutineCalled = true;
+        Instantiate(flyEnemy, spawnPoints[Random.Range(0,4)].transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(timeToSpawn);
+        coroutineCalled = false;
     }
 }
