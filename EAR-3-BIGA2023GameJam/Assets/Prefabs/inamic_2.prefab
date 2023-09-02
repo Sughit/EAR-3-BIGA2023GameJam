@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9158729039241713169}
   - component: {fileID: 671632155188790941}
   - component: {fileID: 5785331890865117877}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: inamic_2
   m_TagString: Pinguin
   m_Icon: {fileID: 0}
@@ -173,6 +173,8 @@ MonoBehaviour:
   attackRate: 1
   damage: 1
   attackPoint: {fileID: 1130341767948103723}
+  pinguin1: {fileID: 0}
+  pinguin2: {fileID: 0}
 --- !u!50 &5785331890865117877
 Rigidbody2D:
   serializedVersion: 4
@@ -203,7 +205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1130341767948103723}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: attackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

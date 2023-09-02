@@ -77,6 +77,7 @@ public class enemyBrain : MonoBehaviour
                 anim.SetTrigger("atac");
                 playerHealth.Damage(-damage);
                 }
+                
             }
         }
     }
@@ -86,7 +87,7 @@ public class enemyBrain : MonoBehaviour
         if(collider.gameObject.tag=="Player")
         {
             anim.SetBool("mers",true);
-            speed = 4; 
+            speed = 5; 
         }
     }
     void OnTriggerEnter2D(Collider2D collider)
@@ -96,7 +97,6 @@ public class enemyBrain : MonoBehaviour
             currentTime=0;
         }
     }
-    
     
 
     private void OnDrawGizmos()

@@ -27,15 +27,10 @@ public class enemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         isHit = 1;
+        StartCoroutine(Transform());
         health -= damage;
         anim.SetTrigger("lovit");
-        if(transform.position.x - player.position.x < 0)
-        {
-          Transform(-2);
-        } else
-        {
-            Transform(2);
-        }
+        
         if(textDamage != null && health != 0)
         {
             ShowDamageText();
@@ -54,9 +49,9 @@ public class enemyHealth : MonoBehaviour
         isHit -= Time.deltaTime;
         if(health <= 0)
         {
-            scoreSystem.score += 50;
-            Destroy(gameObject);
+            StartCoroutine(Moarte());
         }
+
     }
     IEnumerator ColorChange()
     {
@@ -64,16 +59,27 @@ public class enemyHealth : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         m_SpriteRenderer.color = m_Color;
     }
-    void Transform(float power)
+    IEnumerator Transform()
     {
-        for(int i=150;i>=0;i--)
+        for(int i=0;i<=10;i++)
         {
-            while(i!=0)
-            {
-            transform.position += transform.right * power * Time.deltaTime ;
-            }
+            if(transform.position.x - player.position.x < 0)
+        {
+          transform.position += transform.right * -0.2f;
+        } else
+        {
+            transform.position += transform.right * 0.2f;
+        }
+        yield return new WaitForSeconds(0.01f);
         }
     }
-
+    IEnumerator Moarte()
+    {
+        health=1;
+        scoreSystem.score += 50;
+        anim.SetTrigger("moarte");
+        yield return new WaitForSeconds(0.06f);
+        Destroy(gameObject);
+    }
     
 }
