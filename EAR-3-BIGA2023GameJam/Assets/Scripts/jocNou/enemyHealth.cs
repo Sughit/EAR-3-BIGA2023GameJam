@@ -31,10 +31,10 @@ public class enemyHealth : MonoBehaviour
         anim.SetTrigger("lovit");
         if(transform.position.x - player.position.x < 0)
         {
-            Transformare(-2);
+          Transform(-2);
         } else
         {
-            Transformare(2);
+            Transform(2);
         }
         if(textDamage != null && health != 0)
         {
@@ -64,12 +64,16 @@ public class enemyHealth : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         m_SpriteRenderer.color = m_Color;
     }
-
-    void Transformare(float power)
+    void Transform(float power)
     {
-        while(1==1)
+        for(int i=150;i>=0;i--)
         {
+            while(i!=0)
+            {
             transform.position += transform.right * power * Time.deltaTime ;
+            }
         }
     }
+
+    
 }

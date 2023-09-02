@@ -21,7 +21,7 @@ public class playerFight : MonoBehaviour
     float currentLegTime;
     enemyHealth enemy;
     Animator animEnemy;
-    Animator pinguin;
+    Animator pinguin; 
 
     void Start()
     {

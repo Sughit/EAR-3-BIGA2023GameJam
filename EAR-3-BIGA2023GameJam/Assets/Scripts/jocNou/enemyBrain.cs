@@ -86,7 +86,7 @@ public class enemyBrain : MonoBehaviour
         if(collider.gameObject.tag=="Player")
         {
             anim.SetBool("mers",true);
-            speed = 4;
+            speed = 4; 
         }
     }
     void OnTriggerEnter2D(Collider2D collider)
