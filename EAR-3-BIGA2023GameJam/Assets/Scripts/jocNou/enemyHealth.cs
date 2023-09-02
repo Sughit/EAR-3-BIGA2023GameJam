@@ -14,12 +14,15 @@ public class enemyHealth : MonoBehaviour
     Rigidbody2D rb;
     public Transform player;
     Animator anim;
+    AudioSource moarte;
+    GameObject sunetMoarte;
 
     void Awake()
     {
         rb=GetComponent<Rigidbody2D>();
         health = maxHealth;
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        moarte=GameObject.Find("sunetMoarte").GetComponent<AudioSource>();
         m_Color= new Color(255, 255, 255);
         m_NewColor = new Color(153, 0, 0);
         anim=GetComponent<Animator>();
@@ -75,6 +78,7 @@ public class enemyHealth : MonoBehaviour
     }
     IEnumerator Moarte()
     {
+        moarte.Play();
         health=1;
         scoreSystem.score += 50;
         anim.SetTrigger("moarte");

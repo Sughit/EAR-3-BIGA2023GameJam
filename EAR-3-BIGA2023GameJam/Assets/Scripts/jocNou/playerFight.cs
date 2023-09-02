@@ -27,12 +27,14 @@ public class playerFight : MonoBehaviour
     enemyHealth enemy;
     Animator animEnemy;
     Animator pinguin; 
+    AudioSource audio;
 
     void Start()
     {
         rb=GetComponent<Rigidbody2D>();
         pinguin=GetComponent<Animator>();
         currentChargeTime = chargeRate;
+        audio = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -68,6 +70,7 @@ public class playerFight : MonoBehaviour
                 scale.x = -1;
                 transform.localScale = scale;
                 pinguin.SetTrigger("atac");
+                audio.Play();
                 
                 if(numOfHits == 2)
                 {
@@ -93,6 +96,7 @@ public class playerFight : MonoBehaviour
                 scale.x = 1;
                 transform.localScale = scale;
                 pinguin.SetTrigger("atac");
+                audio.Play();
                 
                 if(numOfHits == 2)
                 {

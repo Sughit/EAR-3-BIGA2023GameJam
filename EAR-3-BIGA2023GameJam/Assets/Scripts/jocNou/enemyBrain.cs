@@ -14,10 +14,12 @@ public class enemyBrain : MonoBehaviour
     public Transform attackPoint;
     health playerHealth;
     Animator anim;
+    AudioSource audio;
 
     void Start()
     {
         anim =GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -75,7 +77,9 @@ public class enemyBrain : MonoBehaviour
                 {
                     anim.SetBool("mers",false);
                 anim.SetTrigger("atac");
+                                audio.Play();
                 playerHealth.Damage(-damage);
+
                 }
                 
             }
