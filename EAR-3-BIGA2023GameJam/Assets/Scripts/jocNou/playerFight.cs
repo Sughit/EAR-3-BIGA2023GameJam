@@ -19,8 +19,10 @@ public class playerFight : MonoBehaviour
     public float damageLeg;
     public float attackRate;
     public float attackLegRate;
+    public float chargeRate;
     float currentTime;
     float currentLegTime;
+    float currentChargeTime;
     bool jumped;
     enemyHealth enemy;
     Animator animEnemy;
@@ -30,6 +32,7 @@ public class playerFight : MonoBehaviour
     {
         rb=GetComponent<Rigidbody2D>();
         pinguin=GetComponent<Animator>();
+        currentChargeTime = chargeRate;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -115,6 +118,15 @@ public class playerFight : MonoBehaviour
             {
                 currentLegTime = attackLegRate;
                 LegAttack();
+                if(currentChargeTime <= 0)
+                {
+                    currentChargeTime = chargeRate;
+                    ChargeLegAttack();
+                }
+                else
+                {
+                    currentChargeTime -= Time.deltaTime;
+                }
                 // if(jumped)
                 // {
                 //     JumpAttack();
@@ -138,6 +150,15 @@ public class playerFight : MonoBehaviour
             {
                 currentLegTime = attackLegRate;
                 LegAttack();
+                if(currentChargeTime <= 0)
+                {
+                    currentChargeTime = chargeRate;
+                    ChargeLegAttack();
+                }
+                else
+                {
+                    currentChargeTime -= Time.deltaTime;
+                }
                 // if(jumped)
                 // {
                 //     JumpAttack();
@@ -213,6 +234,17 @@ public class playerFight : MonoBehaviour
             if(enemy = collider.GetComponent<enemyHealth>())
             {
                 enemy.TakeDamage(damageLeg);
+            }
+        }
+    }
+
+    void ChargeLegAttack()
+    {
+        foreach(Collider2D collider in Physics2D.OverlapCircleAll(legPoint.position, attackRange))
+        {
+            if(enemy = collider.GetComponent<enemyHealth>())
+            {
+                enemy.TakeDamage(2*damageLeg);
             }
         }
     }
