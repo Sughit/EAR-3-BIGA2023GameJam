@@ -1254,7 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyEnemy: {fileID: 3535906021476252322, guid: 004b7c73918f0d94d8d6707fc503e5d4, type: 3}
-  timeToSpawn: 3
+  timeToSpawn: 10
   spawnPoints:
   - {fileID: 999739407}
   - {fileID: 1203463559}

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 8607551531779686852}
   - component: {fileID: 8607551531779686858}
   - component: {fileID: 8624322597293388747}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -260,6 +260,7 @@ MonoBehaviour:
   damageLeg: 0.5
   attackRate: 0.5
   attackLegRate: 0.5
+  chargeRate: 0
 --- !u!50 &8607551531779686852
 Rigidbody2D:
   serializedVersion: 4
