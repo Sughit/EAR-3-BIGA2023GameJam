@@ -11,11 +11,11 @@ public class health : MonoBehaviour
     public Image[] hearts;
     public Sprite[] heartStages;
 
-    int index0 = 0;
-    int index1 = 0;
-    int index2 = 0;
-    int index3 = 0;
-    int index4 = 0;
+    public int index0 = 0;
+    public int index1 = 0;
+    public int index2 = 0;
+    public int index3 = 0;
+    public int index4 = 0;
 
     void Start()
     {
@@ -28,66 +28,6 @@ public class health : MonoBehaviour
             Time.timeScale = 0;
             gameOver.SetActive(true);
         }
-        // switch(Health)
-        // {
-        //     case 5:
-        //     foreach(var heart in hearts)
-        //     {
-        //         heart.gameObject.SetActive(true);
-        //     }
-        //     break;
-
-        //     case 4:
-        //     foreach(var heart in hearts)
-        //     {
-        //         heart.gameObject.SetActive(true);
-        //     }
-        //     hearts[4].gameObject.SetActive(false);
-        //     break;
-
-        //     case 3:
-        //     foreach(var heart in hearts)
-        //     {
-        //         heart.gameObject.SetActive(true);
-        //     }
-        //     hearts[4].gameObject.SetActive(false);
-        //     hearts[3].gameObject.SetActive(false);
-        //     break;
-
-        //     case 2:
-        //     foreach(var heart in hearts)
-        //     {
-        //         heart.gameObject.SetActive(true);
-        //     }
-        //     hearts[4].gameObject.SetActive(false);
-        //     hearts[3].gameObject.SetActive(false);
-        //     hearts[2].gameObject.SetActive(false);
-        //     break;
-
-        //     case 1:
-        //     foreach(var heart in hearts)
-        //     {
-        //         heart.gameObject.SetActive(true);
-        //     }
-        //     hearts[4].gameObject.SetActive(false);
-        //     hearts[3].gameObject.SetActive(false);
-        //     hearts[2].gameObject.SetActive(false);
-        //     hearts[1].gameObject.SetActive(false);
-        //     break;
-
-        //     case 0:
-        //     foreach(var heart in hearts)
-        //     {
-        //         heart.gameObject.SetActive(true);
-        //     }
-        //     hearts[4].gameObject.SetActive(false);
-        //     hearts[3].gameObject.SetActive(false);
-        //     hearts[2].gameObject.SetActive(false);
-        //     hearts[1].gameObject.SetActive(false);
-        //     hearts[0].gameObject.SetActive(false);
-        //     break;
-        // }
-        
     }
     public void Heal(int amount)
     {
@@ -130,11 +70,16 @@ public class health : MonoBehaviour
             ModifyHeart(1, index3);
             index3++; 
         }
-        else if(Health <= 5 && Health >=0)
+        else if(Health <= 5 && Health >0)
         {
             ModifyHeart(0, index4);
             index4++;
+        }else if(Health == 0)
+        {
+            Time.timeScale = 0;
+            gameOver.SetActive(true);
         }
+        
     }
 
     void ModifyHeart(int numOfHeart, int i)

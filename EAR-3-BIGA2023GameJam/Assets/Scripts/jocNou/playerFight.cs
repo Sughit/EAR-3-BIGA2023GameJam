@@ -11,14 +11,17 @@ public class playerFight : MonoBehaviour
     public int numOfHitsLeg;
     public Transform hitPoint;
     public Transform legPoint;
+    public Transform downPoint;
     public float attackRange;
     public float attackRangeLeg;
+    public float jumpedRange;
     public float damage;
     public float damageLeg;
     public float attackRate;
     public float attackLegRate;
     float currentTime;
     float currentLegTime;
+    bool jumped;
     enemyHealth enemy;
     Animator animEnemy;
     Animator pinguin; 
@@ -33,6 +36,7 @@ public class playerFight : MonoBehaviour
     {
         if(other.tag == "Ground")
         {
+            jumped = true;
             canJump = true;
         }
     }
@@ -43,6 +47,7 @@ public class playerFight : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce);
             pinguin.SetTrigger("sarit");
             canJump = false;
+            jumped = false;
         }
 
         Vector3 scale = transform.localScale;
@@ -54,13 +59,16 @@ public class playerFight : MonoBehaviour
                 scale.x = -1;
                 transform.localScale = scale;
                 pinguin.SetTrigger("atac");
-                numOfHits++;
-                if(numOfHits == 3)
+                
+                if(numOfHits == 2)
                 {
-                    SuperAttack();
                     numOfHits=0;
+                    SuperAttack();
                 }
-                Attack();
+                else
+                {
+                    Attack();
+                }
             }
         }
         else
@@ -76,13 +84,16 @@ public class playerFight : MonoBehaviour
                 scale.x = 1;
                 transform.localScale = scale;
                 pinguin.SetTrigger("atac");
-                numOfHits++;
-                if(numOfHits == 3)
+                
+                if(numOfHits == 2)
                 {
-                    SuperAttack();
                     numOfHits=0;
+                    SuperAttack();
                 }
-                Attack();
+                else
+                {
+                    Attack();
+                }
             }
         }
         else
@@ -94,16 +105,18 @@ public class playerFight : MonoBehaviour
         {
             scale.x = -1;
             transform.localScale = scale;
-            // numOfHits++;
-            // if(numOfHits == 3)
-            // {
-            //     SuperLegAttack();
-            //     numOfHits=0;
-            // }
             if(currentLegTime <= 0)
             {
                 currentLegTime = attackLegRate;
-                LegAttack();
+                if(jumped)
+                {
+                    JumpAttack();
+                    jumped = false;
+                }
+                else
+                {
+                    LegAttack();
+                }
             }
             else
             {
@@ -114,16 +127,18 @@ public class playerFight : MonoBehaviour
         {
             scale.x = 1;
             transform.localScale = scale;
-            // numOfHits++;
-            // if(numOfHits == 3)
-            // {
-            //     SuperLegAttack();
-            //     numOfHits=0;
-            // }
             if(currentLegTime <= 0)
             {
                 currentLegTime = attackLegRate;
-                LegAttack();
+                if(jumped)
+                {
+                    JumpAttack();
+                    jumped = false;
+                }
+                else
+                {
+                    LegAttack();
+                }
             }
             else
             {
@@ -152,6 +167,7 @@ public class playerFight : MonoBehaviour
                 if(enemy = collider.GetComponent<enemyHealth>())
                 {
                     enemy.TakeDamage(2*damage);
+                    numOfHits = 0;
                 }
         }
     }
@@ -175,12 +191,10 @@ public class playerFight : MonoBehaviour
         {
             if(enemy = collider.GetComponent<enemyHealth>())
             {
+                numOfHits++;
                 enemy.TakeDamage(damage);
             }
-            else
-            {
-                numOfHits=0;
-            }
+            
         }
     }
 
@@ -192,9 +206,16 @@ public class playerFight : MonoBehaviour
             {
                 enemy.TakeDamage(damageLeg);
             }
-            else
+        }
+    }
+
+    void JumpAttack()
+    {
+        foreach(Collider2D collider in Physics2D.OverlapCircleAll(downPoint.position, jumpedRange))
+        {
+            if(enemy = collider.GetComponent<enemyHealth>())
             {
-                numOfHits=0;
+                enemy.TakeDamage(damageLeg + damage/2);
             }
         }
     }
@@ -208,6 +229,10 @@ public class playerFight : MonoBehaviour
         Gizmos.color = Color.blue;
         Vector3 legPosition = legPoint.position;
         Gizmos.DrawWireSphere(legPosition, attackRangeLeg);
+
+        Gizmos.color = Color.green;
+        Vector3 jumpPosition = downPoint.position;
+        Gizmos.DrawWireSphere(jumpPosition, jumpedRange);
     }
 
     public IEnumerator GravityOnOff()
