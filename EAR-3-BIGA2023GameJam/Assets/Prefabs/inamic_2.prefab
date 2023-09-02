@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5785331890865117877}
   m_Layer: 0
   m_Name: inamic_2
-  m_TagString: Untagged
+  m_TagString: Pinguin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06145096, y: -0.88079834}
+  m_Offset: {x: 0.15773833, y: -0.88079834}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,7 +135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.129387, y: 3.2764664}
+  m_Size: {x: 2.3219616, y: 3.2764664}
   m_EdgeRadius: 0
 --- !u!114 &9158729039241713169
 MonoBehaviour:
@@ -152,6 +152,8 @@ MonoBehaviour:
   health: 0
   maxHealth: 5
   textDamage: {fileID: 5709602141290167403, guid: 38ea8a11566dec742bd3f560e5b42f20, type: 3}
+  isHit: 0
+  player: {fileID: 8607551531779686853, guid: a00d2c2329052314fb20ccae3fe18f78, type: 3}
 --- !u!114 &671632155188790941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9179944085236920605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.16, y: -0.94, z: 0}
+  m_LocalPosition: {x: 1.273, y: -0.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

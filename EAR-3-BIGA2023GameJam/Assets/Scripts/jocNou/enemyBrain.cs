@@ -71,11 +71,33 @@ public class enemyBrain : MonoBehaviour
         {
             if(playerHealth = collider.GetComponent<health>())
             {
-                playerHealth.Damage(-damage);
+                if(collider.gameObject.tag=="Player")
+                {
+                    anim.SetBool("mers",false);
                 anim.SetTrigger("atac");
+                playerHealth.Damage(-damage);
+                }
             }
         }
     }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if(collider.gameObject.tag=="Player")
+        {
+            anim.SetBool("mers",true);
+            speed = 4;
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.tag=="Player")
+        {
+            currentTime=0;
+        }
+    }
+    
+    
 
     private void OnDrawGizmos()
     {
