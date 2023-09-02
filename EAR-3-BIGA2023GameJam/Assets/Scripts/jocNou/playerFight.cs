@@ -49,6 +49,12 @@ public class playerFight : MonoBehaviour
             canJump = false;
             jumped = false;
         }
+        if(jumped && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        {
+            jumped = false;
+            currentLegTime = attackLegRate;
+            JumpAttack();
+        }
 
         Vector3 scale = transform.localScale;
         if(currentTime <= 0)
@@ -108,15 +114,16 @@ public class playerFight : MonoBehaviour
             if(currentLegTime <= 0)
             {
                 currentLegTime = attackLegRate;
-                if(jumped)
-                {
-                    JumpAttack();
-                    jumped = false;
-                }
-                else
-                {
-                    LegAttack();
-                }
+                LegAttack();
+                // if(jumped)
+                // {
+                //     JumpAttack();
+                //     jumped = false;
+                // }
+                // else
+                // {
+                //     LegAttack();
+                // }
             }
             else
             {
@@ -130,15 +137,16 @@ public class playerFight : MonoBehaviour
             if(currentLegTime <= 0)
             {
                 currentLegTime = attackLegRate;
-                if(jumped)
-                {
-                    JumpAttack();
-                    jumped = false;
-                }
-                else
-                {
-                    LegAttack();
-                }
+                LegAttack();
+                // if(jumped)
+                // {
+                //     JumpAttack();
+                //     jumped = false;
+                // }
+                // else
+                // {
+                //     LegAttack();
+                // }
             }
             else
             {
