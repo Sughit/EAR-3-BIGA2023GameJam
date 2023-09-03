@@ -28,6 +28,8 @@ public class playerFight : MonoBehaviour
     Animator animEnemy;
     Animator pinguin; 
     AudioSource audio;
+    public GameObject plonjeuParticule;
+    bool plojeu;
 
     void Start()
     {
@@ -43,7 +45,12 @@ public class playerFight : MonoBehaviour
         {
             jumped = true;
             canJump = true;
+            
         }
+    }
+    IEnumerator WaitForNextFrame()
+    {
+        yield return null;
     }
     void Update()
     {
@@ -54,11 +61,12 @@ public class playerFight : MonoBehaviour
             canJump = false;
             jumped = false;
         }
-        if(jumped && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        if(jumped && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !plojeu)
         {
+            JumpAttack();
             jumped = false;
             currentLegTime = attackLegRate;
-            JumpAttack();
+            
         }
 
         Vector3 scale = transform.localScale;
@@ -121,25 +129,15 @@ public class playerFight : MonoBehaviour
             if(currentLegTime <= 0)
             {
                 currentLegTime = attackLegRate;
-                LegAttack();
-                if(currentChargeTime <= 0)
+                if(numOfHitsLeg == 4)
                 {
-                    currentChargeTime = chargeRate;
+                    numOfHitsLeg = 0;
                     ChargeLegAttack();
                 }
                 else
                 {
-                    currentChargeTime -= Time.deltaTime;
+                    LegAttack();
                 }
-                // if(jumped)
-                // {
-                //     JumpAttack();
-                //     jumped = false;
-                // }
-                // else
-                // {
-                //     LegAttack();
-                // }
             }
             else
             {
@@ -153,25 +151,15 @@ public class playerFight : MonoBehaviour
             if(currentLegTime <= 0)
             {
                 currentLegTime = attackLegRate;
-                LegAttack();
-                if(currentChargeTime <= 0)
+                if(numOfHitsLeg == 4)
                 {
-                    currentChargeTime = chargeRate;
+                    numOfHitsLeg = 0;
                     ChargeLegAttack();
                 }
                 else
                 {
-                    currentChargeTime -= Time.deltaTime;
+                    LegAttack();
                 }
-                // if(jumped)
-                // {
-                //     JumpAttack();
-                //     jumped = false;
-                // }
-                // else
-                // {
-                //     LegAttack();
-                // }
             }
             else
             {
@@ -211,9 +199,8 @@ public class playerFight : MonoBehaviour
         {
                 if(enemy = collider.GetComponent<enemyHealth>())
                 {
-                    enemy.TakeDamage(damage);
-                    animEnemy = collider.GetComponent<Animator>();
-                    animEnemy.SetTrigger("fall");
+                    enemy.TakeDamage(4*damageLeg);
+                    
                 }
         }
     }
@@ -237,6 +224,7 @@ public class playerFight : MonoBehaviour
         {
             if(enemy = collider.GetComponent<enemyHealth>())
             {
+                numOfHitsLeg++;
                 enemy.TakeDamage(damageLeg);
             }
         }
@@ -255,13 +243,24 @@ public class playerFight : MonoBehaviour
 
     void JumpAttack()
     {
-        foreach(Collider2D collider in Physics2D.OverlapCircleAll(downPoint.position, jumpedRange))
+        plojeu = true;
+        if(jumped)
         {
-            if(enemy = collider.GetComponent<enemyHealth>())
+            jumped = false;
+            foreach(Collider2D collider in Physics2D.OverlapCircleAll(downPoint.position, jumpedRange))
             {
-                enemy.TakeDamage(damageLeg + damage/2);
+                if(enemy = collider.GetComponent<enemyHealth>())
+                {
+                    enemy.TakeDamage(damageLeg + damage/2);
+                
+                }
             }
+            Instantiate(plonjeuParticule, transform.position, Quaternion.identity);
+            Debug.Log("splash");
         }
+        jumped = false;
+        StartCoroutine(WaitForNextFrame());
+        plojeu = false;
     }
 
     private void OnDrawGizmos()
