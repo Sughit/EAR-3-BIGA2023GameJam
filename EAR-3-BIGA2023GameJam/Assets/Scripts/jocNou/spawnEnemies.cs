@@ -8,6 +8,8 @@ public class spawnEnemies : MonoBehaviour
     public GameObject[] spawnPoints;
     public float timeToSpawn;
     float currentTime;
+    bool canChangeI=true;
+    bool canChangeII=true;
 
     void Start()
     {
@@ -16,12 +18,14 @@ public class spawnEnemies : MonoBehaviour
 
     void Update()
     {
-        if(scoreSystem.score == 500)
+        if(scoreSystem.score == 500 && canChangeI)
         {
-            timeToSpawn -= 0.05f;
-        }else if(scoreSystem.score == 700)
+            timeToSpawn -= 0.25f;
+            canChangeI = false;
+        }else if(scoreSystem.score == 700 && canChangeII)
         {
-            timeToSpawn -= 0.05f;
+            timeToSpawn -= 0.25f;
+            canChangeII=false;
         }
         if(Time.timeScale == 1)
         {
