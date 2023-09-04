@@ -18,12 +18,33 @@ public class enemyBrain : MonoBehaviour
 
     void Start()
     {
+        SelectPlayer();
         anim =GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
     }
 
+    void SelectPlayer()
+    {
+        if(caracterSelector.pinguinSelectat == 0)
+        {
+            player = GameObject.Find("player").GetComponent<Transform>();
+        }
+        else if(caracterSelector.pinguinSelectat == 1)
+        {
+            player = GameObject.Find("player1").GetComponent<Transform>();
+        }
+        else if(caracterSelector.pinguinSelectat == 2)
+        {
+            player = GameObject.Find("player2").GetComponent<Transform>();
+        }
+    }
     void Update()
     {
+        if(player == null)
+        {
+            SelectPlayer();
+        }
+
         float go = GetComponent<enemyHealth>().isHit;
         if(transform.position.x - player.position.x < 0)
         {

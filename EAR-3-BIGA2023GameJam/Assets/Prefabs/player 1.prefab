@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8607551531779686858}
   - component: {fileID: 8624322597293388747}
   m_Layer: 8
-  m_Name: player
+  m_Name: player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 901639f1dddd7b04aa3c943786d274d5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8679245, g: 0.06877886, b: 0.06877886, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -325,11 +325,11 @@ MonoBehaviour:
   maxHealth: 25
   gameOver: {fileID: 5233727263760550717, guid: 37622104644edcf499702b7f22131489, type: 3}
   hearts:
-  - {fileID: 3603902577924784544, guid: 6a21dbefcefbfb8479fc3e6c81b7df7b, type: 3}
-  - {fileID: 7831287250286517328, guid: 877f347cd34fcb0488bf2b410b85346a, type: 3}
-  - {fileID: 8378755521076439689, guid: 05617877cffca0a4fa6f7b429c420eb3, type: 3}
-  - {fileID: 2998776094843486064, guid: 41653f156c172e644b750cfb4e495d38, type: 3}
-  - {fileID: 8616872695771571905, guid: 84150b0102f5d7245895f562d2978fd9, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   heartStages:
   - {fileID: 21300000, guid: c2de6874e8cd31c49b73cc70ea9b5415, type: 3}
   - {fileID: 21300000, guid: 3d147ba3990bb784181cdfa0f1c4b973, type: 3}
