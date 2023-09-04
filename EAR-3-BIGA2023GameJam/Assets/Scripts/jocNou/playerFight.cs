@@ -80,7 +80,6 @@ public class playerFight : MonoBehaviour
                 transform.localScale = scale;
                 pinguin.SetTrigger("atac");
                 audio.Play();
-                canJump=true;
                 if(numOfHits == 2)
                 {
                     numOfHits=0;
@@ -106,7 +105,6 @@ public class playerFight : MonoBehaviour
                 transform.localScale = scale;
                 pinguin.SetTrigger("atac");
                 audio.Play();
-                canJump=true;
                 if(numOfHits == 2)
                 {
                     numOfHits=0;
@@ -220,11 +218,10 @@ public class playerFight : MonoBehaviour
     {
         foreach(Collider2D collider in Physics2D.OverlapCircleAll(hitPoint.position, attackRange))
         {
-
             if(enemy = collider.GetComponent<enemyHealth>())
             {
+                                enemy.TakeDamage(damage);
                 numOfHits++;
-                enemy.TakeDamage(damage);
             }
             
         }
