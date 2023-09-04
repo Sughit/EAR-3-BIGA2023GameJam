@@ -71,10 +71,10 @@ public class enemyBrain : MonoBehaviour
         }
         else if(Vector3.Distance(transform.position, player.position) <= stopDis)
         {
+            anim.SetBool("mers",false);
             speed = 0;
             if(canAttackDelay)
-            {
-                anim.SetBool("mers",false);
+            { 
                 if(timeForDelay <= 0)
                 {
                     Attack();
