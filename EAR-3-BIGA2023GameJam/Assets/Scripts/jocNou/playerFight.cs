@@ -220,6 +220,7 @@ public class playerFight : MonoBehaviour
     {
         foreach(Collider2D collider in Physics2D.OverlapCircleAll(hitPoint.position, attackRange))
         {
+
             if(enemy = collider.GetComponent<enemyHealth>())
             {
                 numOfHits++;
