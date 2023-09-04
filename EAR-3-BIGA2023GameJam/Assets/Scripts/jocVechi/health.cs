@@ -10,6 +10,7 @@ public class health : MonoBehaviour
     public GameObject gameOver;
     public Image[] hearts;
     public Sprite[] heartStages;
+    public Image rosu;
 
     public int index0 = 0;
     public int index1 = 0;
@@ -75,9 +76,11 @@ public class health : MonoBehaviour
         {
             ModifyHeart(0, index4);
             index4++;
-        }else if(Health == 0)
+            rosu.gameObject.SetActive(true);
+        }else if(Health <= 0)
         {
             Time.timeScale = 0;
+            rosu.gameObject.SetActive(false);
             gameOver.SetActive(true);
         }
         
