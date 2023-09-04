@@ -16,6 +16,13 @@ public class spawnEnemies : MonoBehaviour
 
     void Update()
     {
+        if(scoreSystem.score == 500)
+        {
+            timeToSpawn -= 0.05f;
+        }else if(scoreSystem.score == 700)
+        {
+            timeToSpawn -= 0.05f;
+        }
         if(Time.timeScale == 1)
         {
             if(currentTime <= 0)
