@@ -16,6 +16,10 @@ public class enemyBrain : MonoBehaviour
     Animator anim;
     AudioSource audio;
 
+    bool canAttackDelay=true;
+    public float timeForDelay;
+     
+
     void Start()
     {
         SelectPlayer();
@@ -68,18 +72,29 @@ public class enemyBrain : MonoBehaviour
         else if(Vector3.Distance(transform.position, player.position) <= stopDis)
         {
             speed = 0;
-            if(go <= 0)
+            if(canAttackDelay)
+            {
+                anim.SetBool("mers",false);
+                if(timeForDelay <= 0)
+                {
+                    Attack();
+                    canAttackDelay = false;
+                }
+                else
+                {
+                    timeForDelay -= Time.deltaTime;
+                }
+            }else if(go <= 0)
             {
                 if(currentTime <= 0)
-            {
-                
-                Attack();
-                currentTime = attackRate;
-            }
-            else
-            {
-                currentTime -= Time.deltaTime;
-            }
+                {
+                    Attack();
+                    currentTime = attackRate;
+                }
+                else
+                {
+                    currentTime -= Time.deltaTime;
+                }
             }
         }
         else

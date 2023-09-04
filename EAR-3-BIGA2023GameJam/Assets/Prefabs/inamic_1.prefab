@@ -297,6 +297,7 @@ MonoBehaviour:
   attackRate: 1
   damage: 1
   attackPoint: {fileID: 8741257017599358264}
+  timeForDelay: 0.5
 --- !u!61 &479140416037371373
 BoxCollider2D:
   m_ObjectHideFlags: 0
