@@ -27,6 +27,7 @@ public class health : MonoBehaviour
         {
             Time.timeScale = 0;
             gameOver.SetActive(true);
+            Cursor.visible = true;
         }
     }
     public void Heal(int amount)

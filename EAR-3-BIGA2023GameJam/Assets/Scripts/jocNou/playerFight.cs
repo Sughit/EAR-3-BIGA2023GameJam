@@ -31,6 +31,7 @@ public class playerFight : MonoBehaviour
     public GameObject plonjeuParticule;
     bool plojeu;
 
+
     void Start()
     {
         rb=GetComponent<Rigidbody2D>();
@@ -43,7 +44,7 @@ public class playerFight : MonoBehaviour
     {
         if(other.tag == "Ground")
         {
-            jumped = true;
+            StartCoroutine(JumpSwitch());
             canJump = true;
             
         }
@@ -57,16 +58,16 @@ public class playerFight : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             rb.AddForce(Vector2.up * jumpForce);
+                        jumped = false;
             pinguin.SetTrigger("sarit");
             canJump = false;
-            jumped = false;
         }
-        if(jumped && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !plojeu)
+        if(jumped &&(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !plojeu)
         {
-            JumpAttack();
+             StartCoroutine(JumpAttack());
             jumped = false;
             currentLegTime = attackLegRate;
-            
+                        Debug.Log("splash");
         }
 
         Vector3 scale = transform.localScale;
@@ -79,7 +80,7 @@ public class playerFight : MonoBehaviour
                 transform.localScale = scale;
                 pinguin.SetTrigger("atac");
                 audio.Play();
-                
+                canJump=true;
                 if(numOfHits == 2)
                 {
                     numOfHits=0;
@@ -105,7 +106,7 @@ public class playerFight : MonoBehaviour
                 transform.localScale = scale;
                 pinguin.SetTrigger("atac");
                 audio.Play();
-                
+                canJump=true;
                 if(numOfHits == 2)
                 {
                     numOfHits=0;
@@ -126,6 +127,7 @@ public class playerFight : MonoBehaviour
         {
             scale.x = -1;
             transform.localScale = scale;
+            canJump=false;
             if(currentLegTime <= 0)
             {
                 currentLegTime = attackLegRate;
@@ -144,10 +146,15 @@ public class playerFight : MonoBehaviour
                 currentLegTime -= Time.deltaTime;
             }
         }
+        if(Input.GetKeyUp(KeyCode.A))
+        {
+            canJump=true;
+        }
         if(Input.GetKey(KeyCode.D))
         {
             scale.x = 1;
             transform.localScale = scale;
+            canJump=false;
             if(currentLegTime <= 0)
             {
                 currentLegTime = attackLegRate;
@@ -165,6 +172,10 @@ public class playerFight : MonoBehaviour
             {
                 currentLegTime -= Time.deltaTime;
             }
+        }
+        if(Input.GetKeyUp(KeyCode.D))
+        {
+            canJump=true;
         }
 
         if(Input.GetKey(KeyCode.D))
@@ -241,13 +252,13 @@ public class playerFight : MonoBehaviour
         }
     }
 
-    void JumpAttack()
+    IEnumerator JumpAttack()
     {
         plojeu = true;
         if(jumped)
         {
-            jumped = false;
-            foreach(Collider2D collider in Physics2D.OverlapCircleAll(downPoint.position, jumpedRange))
+            jumped=false;
+                foreach(Collider2D collider in Physics2D.OverlapCircleAll(downPoint.position, jumpedRange))
             {
                 if(enemy = collider.GetComponent<enemyHealth>())
                 {
@@ -255,8 +266,9 @@ public class playerFight : MonoBehaviour
                 
                 }
             }
+                    yield return new WaitForSeconds(0.0199f);
             Instantiate(plonjeuParticule, transform.position, Quaternion.identity);
-            Debug.Log("splash");
+            jumped = false;
         }
         jumped = false;
         StartCoroutine(WaitForNextFrame());
@@ -286,4 +298,10 @@ public class playerFight : MonoBehaviour
         rb.gravityScale = 8.0f;
     }
 
+    IEnumerator JumpSwitch()
+    {
+        jumped=true;
+        yield return new WaitForSeconds(0.05f);
+        jumped=false;
+    }
 }

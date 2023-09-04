@@ -7,6 +7,7 @@ public class meniuPauza : MonoBehaviour
 {
     public GameObject meniuPauzaObj;
      bool meniuDeschis;
+     public GameObject ecranMoarte;
 
      void Start()
     {
@@ -16,9 +17,9 @@ public class meniuPauza : MonoBehaviour
     
     void Update()
     {
-
-
-        if(!meniuDeschis)
+        if(ecranMoarte.activeSelf == false)
+        {
+            if(!meniuDeschis)
         {
             if(Input.GetKeyDown(KeyCode.Escape))
             {
@@ -38,6 +39,7 @@ public class meniuPauza : MonoBehaviour
                 Cursor.visible = false;
             } 
         }
+        }
     }
 
     public void Resume()
@@ -50,8 +52,8 @@ public class meniuPauza : MonoBehaviour
     }
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale=1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Cursor.visible = false;
     }
 

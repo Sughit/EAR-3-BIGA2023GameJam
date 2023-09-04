@@ -7,6 +7,7 @@ public class scoreSystem : MonoBehaviour
 {
     public Text scoreText;
     public static int score;
+    public Text scorFinal;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class scoreSystem : MonoBehaviour
     void Update()
     {
         scoreText.text = $"Score: {score}";
+        scorFinal.text = score.ToString();
     }
 
     void Score(int amount)
