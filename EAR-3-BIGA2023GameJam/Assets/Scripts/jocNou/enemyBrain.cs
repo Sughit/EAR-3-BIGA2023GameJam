@@ -35,11 +35,15 @@ public class enemyBrain : MonoBehaviour
         }
         else if(caracterSelector.pinguinSelectat == 1)
         {
-            player = GameObject.Find("player1").GetComponent<Transform>();
+            player = GameObject.Find("player 1").GetComponent<Transform>();
         }
         else if(caracterSelector.pinguinSelectat == 2)
         {
-            player = GameObject.Find("player2").GetComponent<Transform>();
+            player = GameObject.Find("player 2").GetComponent<Transform>();
+        }
+        else if(caracterSelector.pinguinSelectat == 3)
+        {
+            player = GameObject.Find("player 3").GetComponent<Transform>();
         }
     }
     void Update()

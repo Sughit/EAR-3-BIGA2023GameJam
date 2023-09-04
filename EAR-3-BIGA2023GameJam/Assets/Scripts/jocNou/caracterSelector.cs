@@ -21,4 +21,9 @@ public class caracterSelector : MonoBehaviour
     {
         pinguinSelectat=2;
     }
+
+    public void SelectCaracterTrei()
+    {
+        pinguinSelectat=3;
+    }
 }
