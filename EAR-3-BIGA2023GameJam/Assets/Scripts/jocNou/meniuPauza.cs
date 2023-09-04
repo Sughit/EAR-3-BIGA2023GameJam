@@ -12,6 +12,7 @@ public class meniuPauza : MonoBehaviour
      void Start()
     {
          Cursor.visible = false;
+         Time.timeScale=1;
     }
 
     
@@ -52,7 +53,7 @@ public class meniuPauza : MonoBehaviour
     }
     public void Restart()
     {
-        Time.timeScale=1f;
+        Time.timeScale=1f; 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Cursor.visible = false;
     }
