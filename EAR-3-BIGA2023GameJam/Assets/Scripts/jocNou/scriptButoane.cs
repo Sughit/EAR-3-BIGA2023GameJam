@@ -6,6 +6,7 @@ public class scriptButoane : MonoBehaviour
 {
     public GameObject setari;
     public GameObject principal;
+    public GameObject tutorial;
     public void PlayGame()
     {
         Time.timeScale=1;
@@ -26,5 +27,15 @@ public class scriptButoane : MonoBehaviour
     {
         principal.SetActive(true);
         setari.SetActive(false);
+    }
+    public void TutorialOpen()
+    {
+        tutorial.SetActive(true);
+        principal.SetActive(false);
+    }
+    public void TutorialClose()
+    {
+        principal.SetActive(true);
+        tutorial.SetActive(false);
     }
 }
