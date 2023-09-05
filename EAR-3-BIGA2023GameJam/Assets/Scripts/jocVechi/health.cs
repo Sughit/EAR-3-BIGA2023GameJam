@@ -52,27 +52,27 @@ public class health : MonoBehaviour
     public void Damage(int amount)
     {
         Health += amount;
-        if(Health <= 25 && Health >20)
+        if(Health < 25 && Health >20)
         {
             ModifyHeart(4, index0);
             index0++; 
         }
-        else if(Health <= 20 && Health >15)
+        else if(Health < 20 && Health >15)
         {
             ModifyHeart(3, index1);
             index1++; 
         }
-        else if(Health <= 15 && Health >10)
+        else if(Health < 15 && Health >10)
         {
             ModifyHeart(2, index2);
             index2++; 
         }
-        else if(Health <= 10 && Health >5)
+        else if(Health < 10 && Health >5)
         {
             ModifyHeart(1, index3);
             index3++; 
         }
-        else if(Health <= 5 && Health >0)
+        else if(Health < 5 && Health >0)
         {
             ModifyHeart(0, index4);
             index4++;

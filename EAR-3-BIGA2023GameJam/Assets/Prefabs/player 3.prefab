@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 0
-  maxHealth: 25
+  maxHealth: 26
   gameOver: {fileID: 0}
   hearts:
   - {fileID: 0}
@@ -278,6 +278,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d147ba3990bb784181cdfa0f1c4b973, type: 3}
   - {fileID: 21300000, guid: 53e751c5d71d13949a20a99f6aa7a52f, type: 3}
   - {fileID: 21300000, guid: 60a117c5d23cca84cb8487aee06296ca, type: 3}
+  rosu: {fileID: 0}
   index0: 0
   index1: 0
   index2: 0
